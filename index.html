@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Cognito Auth Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/aws-sdk@2.1219.0/dist/aws-sdk.min.js"></script>
+    <script src="/app.js" defer></script>
+</head>
+<body>
+    <h1>AWS Cognito Auth Example</h1>
+    <div>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button id="signInButton">Sign In</button>
+    </div>
+    <div>
+	<h1> Google Login </h1>
+	<button id="googleLogin">Login with Google</button>
+    </div>
+    <div id="responseOutput"></div> <!-- APIのレスポンス出力用 -->
+</body>
+</html>

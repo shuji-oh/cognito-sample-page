@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <script>
+
+window.onload = () => {
+  const hash = window.location.hash;
+
+  if (hash) {
+    console.log('There is no # params')
+  }
+
+  const params = new URLSearchParams(hash.substring(1));
+  const idToken = params.get('id_token');
+  const accessToken = params.get('access_token');
+
+  // 取得したIDトークンを使って Create Session
+  // ID Token をバックエンドに POST リクエストで送信
+  fetch('/api/session', {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      idToken: idToken
+    })
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to create session');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Session created:', data['user']);
+      window.location.href = '/private'
+    })
+    .catch(error => {
+      console.error('Error creating session:', error);
+    });
+}
+
+  </script>
+</html>
